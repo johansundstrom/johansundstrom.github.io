@@ -25,6 +25,16 @@
             background: linear-gradient(to right, #f3c189 20%,#f7f5f1 100%); 
         }
     </style>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -42,7 +52,9 @@
             </ul>
             <p class="lead">Övning</p>
             <ul class="lead">
-                <li>Vad kostar 1kWh? (nätavgift + elinköp)</li>
+                <li>Vad kostar 1kWh? (nätavgift + elinköp) <button onclick="myFunction()">svar</button>
+                    <div id="myDIV">This is my DIV element</div>
+                </li>
                 <li>Vilken kostar mest att ha tänd - en 40W lampa eller sex 10W lampor</li>
                 <li>Vad är billigast - en 40W lampa i en timme eller två 10W lampor i 30 minuter</li>
                 <li>Hur mycket ström drar en 25W glödlampa</li>
