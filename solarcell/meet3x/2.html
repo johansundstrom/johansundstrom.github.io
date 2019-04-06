@@ -26,14 +26,11 @@
         }
     </style>
     <script>
-        function myFunction() {
-            var x = document.getElementById("myDIV");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
+        $(document).ready(function(){
+          $("button").click(function(){
+            $("#A1").toggle();
+          });
+        });
     </script>
 </head>
 
@@ -53,7 +50,7 @@
             <p class="lead">Övning</p>
             <ul class="lead">
                 <li>Vad kostar 1kWh? (nätavgift + elinköp) <button onclick="myFunction()">svar</button>
-                    <div id="myDIV">This is my DIV element</div>
+                    <div id="A1">This is my DIV element</div>
                 </li>
                 <li>Vilken kostar mest att ha tänd - en 40W lampa eller sex 10W lampor</li>
                 <li>Vad är billigast - en 40W lampa i en timme eller två 10W lampor i 30 minuter</li>
