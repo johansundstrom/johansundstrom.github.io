@@ -24,6 +24,7 @@
         .jumbotron {
             background: linear-gradient(to right, #f3c189 20%,#f7f5f1 100%); 
         }
+        .initiallyHidden { display: none; }
     </style>
     <script>
         $(document).ready(function(){
@@ -49,8 +50,15 @@
             </ul>
             <p class="lead">Övning</p>
             <ul class="lead">
-                <li>Vad kostar 1kWh? (nätavgift + elinköp) <button onclick="myFunction()">svar</button>
-                    <div id="A1">This is my DIV element</div>
+                <li>Vad kostar 1kWh? (nätavgift + elinköp) 
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#A1" aria-expanded="false" aria-controls="collapseExample">
+                        Visa
+                    </button>
+                    <div class="collapse" id="A1">
+                        <div class="card card-body">
+                            Svar A1
+                        </div>
+                    </div>
                 </li>
                 <li>Vilken kostar mest att ha tänd - en 40W lampa eller sex 10W lampor</li>
                 <li>Vad är billigast - en 40W lampa i en timme eller två 10W lampor i 30 minuter</li>
