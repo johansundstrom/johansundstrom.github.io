@@ -44,8 +44,8 @@
             <ul class="lead">
                 <li>Tid - t, Timmar (h), Sekunder (s)</li>
                 <li>Energi - produkten av effekt (P) och tid (t)</li>
-                <li>Energi - W, wattimmar (Wh), wattsekunder (Ws)</li>
-                <li>Energi - WattTimmar/WattSekunder, Wh/Ws</li>
+                <li>Energi - E, watt timmar (Wh), wattsekunder (Ws)</li>
+                <li>Energi - Watt timmar/WattSekunder, Wh/Ws</li>
                 <li>Oftast Wh i dessa sammanhang</li>
             </ul>
             <p class="lead">Övning</p>
@@ -121,12 +121,28 @@
                     </button>
                     <div class="collapse" id="A6">
                         <div class="card card-body">
-                            0,0619444h x 1,3908SEK = 8,61 öre
+                            2200W x 0,0619444h (223sek) x 1,3908SEK = 1,89 SEK
                         </div>
                     </div>
                 </p>
-                <li>När har en bastu (9kW) en kostnad på 100SEK</li>
-            </ol>
+                <li>När har en bastu (9kW) en kostnad på 100SEK
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#A7" aria-expanded="false" aria-controls="collapseExample">
+                        Facit
+                    </button>
+                     <div class="collapse" id="A7">
+                        <div class="card card-body">
+                            9000W i en timme = 9kWh<br>
+                            kWh x kWh-pris(SEK) = kostnad<br>
+                            9kWh x 1,3908 SEK = 12,517 SEK<br>
+                            <br>
+                            kostnad = P(kW) x t(h) x kWh-pris(SEK)<br>
+                            t(h) = kostnad / [ P(kW) x kWh-pris(SEK) ]<br>
+                            t(h) = 100 / (9 x 1,3908)<br>
+                            ~8 timmar (7,98)<br>
+                        </div>
+                    </div>
+                </li>
+            </ol>9
             <hr class="my-2 mb-4">
 
             <nav class="float-right">
