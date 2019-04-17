@@ -31,52 +31,56 @@
     <p class="back text-muted lead ml-2 mb-2"><a href="/index.html">
     << Tillbaka</a> </p> <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4">1. Förutsättningarna</h1>
+            <h1 class="display-4">1. Förutsättningar</h1>
             <hr class="my-2">
             <ul class="lead">
-                <li>Mät Azimuth</li>
-                <li>Ta reda på takvinkel</li>
                 <li>Ha en uppfattning om takytan</li>
-                <li><a target="_blank" href="http://re.jrc.ec.europa.eu/pvg_tools/en/tools.html" class="text-dark">Hämta in solinstrålningen</a></li>
+                <li>Välj solpanel</li>
             </ul>
             <p class="lead">Övning</p>
-            
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col text-right">Uppgift</th>
-                        <th scope="col">Värde</th>
-                        <th scope="col text-left">Enhet</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Azimuth</td>
-                        <td><input id="azimuth"></td>
-                        <td>grader från söder</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Takvinkel</td>
-                        <td><input id="angle"></td>
-                        <td>grader</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Yta</td>
-                        <td><input type="number" min="1" max="100" id="area" oninput="myAreaFunction()"><br>
-                        <td>m<sup>2</sup></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Antal</td>
-                        <td><input type="number" min="1" max="100" id="count" oninput="myCountFunction()"></input></td>
-                        <td>st.</sup></td>
-                    </tr>
-                </tbody>
-            </table>
+
+            <div class="border border-primary p-2">
+                <table border="0">
+                    <tbody>
+                        <tr>
+                            <td class="text-right pr-3">Solpanelsmått</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right pr-3">Bredd</td>
+                            <td><input type="number" min="0" max="2" id="panelWidth" style="width: 100px;" oninput="myPanelAreaFunction()">
+                            <td class="text-left">m (bredden på en solpanel)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right pr-3">Längd</td>
+                            <td><input type="number" min="0" max="2" id="panelLength" style="width: 100px;" oninput="myPanelAreaFunction()"><br>
+                            <td>m (längden på en solpanel)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right pr-3">En solpanel</td>
+                            <td><span id="panelArea"></span></td>
+                            <!--td><input type="number" min="0" max="2" id="panelArea" style="width: 100px;"><br-->
+                            <td>m<sup>2</sup> (en solpanels yta)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right pr-3">Möjlig takyta</td>
+                            <td><input type="number" min="1" max="100" id="area" style="width: 100px;" oninput="myAreaFunction()"><br>
+                            <td>m<sup>2</sup> (takyta för solpaneler)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right pr-3">Möjligt antal</td>
+                            <td><input type="number" min="1" max="100" id="count" style="width: 100px;" oninput="myCountFunction()"></input></td>
+                            <td>st. (antal solpaneler)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right pr-3">Solpanelsyta</td>
+                            <td><input type="number" min="1" max="100" id="totalPanelArea" style="width: 100px;"></input></td>
+                            <td>m<sup>2</sup> (total solpanelsyta)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <hr class="my-2 mb-4">
 
@@ -98,13 +102,36 @@
 
     <!-- Optional JavaScript -->
     <script>
-        function myAreaFunction() {
-            var temp = parseInt(area.value) / 1.6;
-            count.value = temp.toString();
+        var panelArea;
+        var totalPanelArea;
+        var area;
+        var count; 
+
+        //funkar
+        function myPanelAreaFunction() {
+            panelArea = parseFloat(panelWidth.value) * parseFloat(panelLength.value);
+            if (panelArea > 0 ) {
+                document.getElementById("panelArea").innerHTML = panelArea.toString();
+            }
         }
+
+
+        function myAreaFunction() {
+            //var temp = parseFloat(area) / parseFloat(document.getElementById("panelArea").value);
+            // beräkna takyta / solpanelsyta 
+            var temp = document.getElementById("area").value / panelArea;
+            document.getElementById("count").value = temp.toString();
+
+            totalPanelArea = parseFloat(panelArea) * parseFloat(count);
+            document.getElementById("totalPanelArea").value = totalPanelArea.toString();
+        }
+
         function myCountFunction() {
-            var temp = parseInt(count.value) * 1.6;
+            var temp = parseFloat(count) * parseFloat(panelArea);
             area.value = temp.toString();
+
+            totalPanelArea = parseFloat(panelArea) * parseFloat(count);
+            document.getElementById("totalPanelArea").value = totalPanelArea.toString();
         }
     </script>
 

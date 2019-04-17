@@ -42,47 +42,63 @@
             <h1 class="display-4">2. Beräkna produktion</h1>
             <hr class="my-2">
             <ul class="lead">
+                <li>Mät Azimuth</li>
+                <li>Ta reda på takvinkel</li>
                 <li>Försäljning av producerad el (nätnytta) - <a href="http://www.prosument.se/" class="text-dark">Sälj el</a></li>
+                <li><a target="_blank" href="http://re.jrc.ec.europa.eu/pvg_tools/en/tools.html" class="text-dark">Hämta in solinstrålningen</a></li>
                 <li>Årlig produktion (enligt PVGIS)</li>
                 <li>Årlig instrålning (enligt PVGIS)</li>
             </ul>
             <p class="lead">Övning</p>
-            <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col text-right">Uppgift</th>
-                            <th scope="col">Värde</th>
-                            <th scope="col text-left">Enhet</th>
-                        </tr>
-                    </thead>
+
+            <div class="border border-primary p-2">
+                <table>
                     <tbody>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Årlig produktion</td>
-                            <td><input type="number" min="1000" max="100000" id="prod"></td>
-                            <td>kWh</td>
+                            <td class="text-right pr-3">Azimuth</td>
+                            <td><input type="number" min="-180" max="180" id="azimuth" style="width: 100px;"></td>
+                            <td class="text-left pl-3">grader från söder</td>
                         </tr>
                         <tr>
-                            <th scope="row">2</th>
-                            <td>Elförsäljning</td>
-                            <td><input type="number" min="0.1" max="5" id="sale"></td>
+                            <td class="text-right pr-3">Taklutning</td>
+                            <td><input type="number" min="0" max="90" id="angle" style="width: 100px;"></td>
+                            <td class="text-left pl-3">grader</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right pr-3">Årlig produktion</td>
+                            <td><input type="number" min="1000" max="100000" id="prod" style="width: 100px;"></td>
+                            <td class="text-left pl-3">kWh (enligt PVGIS)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <br>
+
+            <div class="border border-primary p-2">
+                <table border="0">
+    
+                    <tbody>
+
+                        <tr>
+                            <td class="text-right pr-3">Elförsäljning</td>
+                            <td><input type="number" min="0.1" max="5" id="sale" style="width: 100px;"></td>
                             <td>SEK/kWh</td>
                         </tr>
                         <tr>
-                            <th scope="row">3</th>
-                            <td>Elcertifikat</td>
-                            <td><input type="number" min="0.1" max="5" id="cert" oninput="myAreaFunction()"><br>
+                            <td class="text-right pr-3">Elcertifikat</td>
+                            <td><input type="number" min="0.1" max="5" id="cert" style="width: 100px;" oninput="myAreaFunction()"><br>
                             <td>m<sup>2</sup></td>
                         </tr>
                         <tr>
-                            <th scope="row">3</th>
-                            <td>Investeringskostnad</td>
-                            <td><input type="number" min="1" max="100" id="count" oninput="myCountFunction()"></input></td>
+                            <td class="text-right pr-3">Investeringskostnad</td>
+                            <td><input type="number" min="1" max="100" id="count" style="width: 100px;" oninput="myCountFunction()"></input></td>
                             <td>st.</sup></td>
                         </tr>
                     </tbody>
                 </table>
+
+            </div>
             <hr class="my-2 mb-4">
 
             <nav class="float-right">
