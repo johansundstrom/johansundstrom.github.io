@@ -26,19 +26,28 @@
         }
         .initiallyHidden { display: none; }
     </style>
+    <script>
+        $(document).ready(function(){
+          $("button").click(function(){
+            $("#A1").toggle();
+          });
+        });
+    </script>
 </head>
 
 <body>
     <p class="back text-muted lead ml-2 mb-2"><a href="/index.html">
     << Tillbaka</a> </p> <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4">2. Beräkna försäljning</h1>
+            <h1 class="display-4">2. Beräkna produktion</h1>
             <hr class="my-2">
             <ul class="lead">
-                <li>Försäljning av producerad el (nätnytta) - <a href="http://www.prosument.se/" class="text-danger">Sälj el</a></li>
-                <li>Mikroproduktion</li>
-                <li>Elcertifikat</li>
-                <li>Skattereduktion</li>
+                <li>Mät Azimuth</li>
+                <li>Ta reda på takvinkel</li>
+                <li>Försäljning av producerad el (nätnytta) - <a href="http://www.prosument.se/" class="text-dark">Sälj el</a></li>
+                <li><a target="_blank" href="http://re.jrc.ec.europa.eu/pvg_tools/en/tools.html" class="text-dark">Hämta in solinstrålningen</a></li>
+                <li>Årlig produktion (enligt PVGIS)</li>
+                <li>Årlig instrålning (enligt PVGIS)</li>
             </ul>
             <p class="lead">Övning (Ver. 2)</p>
 
@@ -46,49 +55,19 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td class="text-left pr-3"><strong>Elförsäljning</strong></td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td class="text-right pr-3">Azimuth</td>
+                            <td><input type="number" min="-180" max="180" id="azimuth" style="width: 100px;"></td>
+                            <td class="text-left pl-3">grader från söder</td>
                         </tr>
                         <tr>
-                            <td class="text-right pr-3">Pris såld kWh</td>
-                            <td><input type="number" min="-180" max="180" id="sell" style="width: 100px;" oninput="sumSoldEnergy()"></td>
-                            <td class="text-left pl-3">SEK</td>
+                            <td class="text-right pr-3">Taklutning</td>
+                            <td><input type="number" min="0" max="90" id="angle" style="width: 100px;"></td>
+                            <td class="text-left pl-3">grader</td>
                         </tr>
                         <tr>
-                            <td class="text-left pr-3"><strong>Nätleverans</strong></td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="text-right pr-3">Mikroproduktion</td>
-                            <td><input type="number" min="-180" max="180" id="deliver" value="0.05" style="width: 100px;" oninput="sumSoldEnergy()"></td>
-                            <td class="text-left pl-3">SEK (EEM)</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left pr-3"><strong>Elcertifikat</strong></td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="text-right pr-3">Energimyndigheten</td>
-                            <td><input type="number" min="-180" max="180" id="certificate" value="0.11" style="width: 100px;" oninput="sumSoldEnergy()"></td>
-                            <td class="text-left pl-3">SEK (Snittpris mars)</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left pr-3"><strong>Skattereduktion</strong></td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left pr-3">Tillbaks på dekl.</td>
-                            <td><input type="number" min="-180" max="180" id="tax" value="0.60" style="width: 100px;" oninput="sumSoldEnergy()"></td>
-                            <td class="text-left pl-3">SEK (max 18 000SEK/år)</td>
-                        </tr>
-                        <tr>
-                            <td class="text-right pr-3">Summa</td>
-                            <td><span class="text-right" id="sum"></span></td>
-                            <td class="text-left pl-3">SEK/kWh</td>
+                            <td class="text-right pr-3">Årlig produktion</td>
+                            <td><input type="number" min="1000" max="100000" id="prod" style="width: 100px;"></td>
+                            <td class="text-left pl-3">kWh (enligt PVGIS)</td>
                         </tr>
                     </tbody>
                 </table>
@@ -96,6 +75,28 @@
 
             <br>
 
+            <div class="border border-primary p-2">
+                <table border="0">
+    
+                    <tbody>
+
+                        <tr>
+                            <td class="text-right pr-3">Elförsäljning</td>
+                            <td><input type="number" min="0.1" max="5" id="sale" style="width: 100px;"></td>
+                            <td>SEK/kWh</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right pr-3">Elcertifikat</td>
+                            <td><input type="number" min="0.1" max="5" id="cert" style="width: 100px;" oninput="myAreaFunction()"><br>
+                            <td>m<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td class="text-right pr-3">Investeringskostnad</td>
+                            <td><input type="number" min="1" max="100" id="count" style="width: 100px;" oninput="myCountFunction()"></input></td>
+                            <td>st.</sup></td>
+                        </tr>
+                    </tbody>
+                </table>
 
             </div>
             <hr class="my-2 mb-4">
@@ -115,19 +116,6 @@
             </nav>
         </div>
     </div>
-
-    <script>
-    var sum;
-
-    function sumSoldEnergy() {
-        soldEnergy = parseFloat(sell.value) + parseFloat(deliver.value) + parseFloat(certificate.value) + parseFloat(tax.value);
-        soldEnergy = soldEnergy.toFixed(2);
-        if (soldEnergy > 0 ) {
-            document.getElementById("sum").innerHTML = soldEnergy.toString();
-        }
-    }
-    
-    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
