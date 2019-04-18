@@ -37,46 +37,75 @@
                 <li>Ha en uppfattning om takytan</li>
                 <li>Välj solpanel</li>
             </ul>
-            <p class="lead">Övning</p>
+            <p class="lead">Övning (ver. 2)</p>
 
             <div class="border border-primary p-2">
                 <table border="0">
                     <tbody>
                         <tr>
-                            <td class="text-right pr-3">Solpanelsmått</td>
+                            <td class="text-left pr-3"><strong>Solpanel</strong></td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
+                            <td class="text-right pr-3">Nominell effekt</td>
+                            <td><input type="number" min="1" max="400" id="power" style="width: 100px;">
+                            <td class="text-left">W</td>
+                        </tr>
+                        <tr>
                             <td class="text-right pr-3">Bredd</td>
-                            <td><input type="number" min="0" max="2" id="panelWidth" style="width: 100px;" oninput="myPanelAreaFunction()">
+                            <td><input type="number" min="0" max="2" id="panelWidth" style="width: 100px;" oninput="calcPanelArea()">
                             <td class="text-left">m (bredden på en solpanel)</td>
                         </tr>
                         <tr>
                             <td class="text-right pr-3">Längd</td>
-                            <td><input type="number" min="0" max="2" id="panelLength" style="width: 100px;" oninput="myPanelAreaFunction()"><br>
+                            <td><input type="number" min="0" max="2" id="panelLength" style="width: 100px;" oninput="calcPanelArea()"><br>
                             <td>m (längden på en solpanel)</td>
                         </tr>
                         <tr>
                             <td class="text-right pr-3">En solpanel</td>
                             <td><span id="panelArea"></span></td>
-                            <!--td><input type="number" min="0" max="2" id="panelArea" style="width: 100px;"><br-->
                             <td>m<sup>2</sup> (en solpanels yta)</td>
                         </tr>
                         <tr>
-                            <td class="text-right pr-3">Möjlig takyta</td>
-                            <td><input type="number" min="1" max="100" id="area" style="width: 100px;" oninput="myAreaFunction()"><br>
-                            <td>m<sup>2</sup> (takyta för solpaneler)</td>
+                            <td class="text-left pr-3"><strong>Takyta</strong></td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
                         </tr>
                         <tr>
-                            <td class="text-right pr-3">Möjligt antal</td>
-                            <td><input type="number" min="1" max="100" id="count" style="width: 100px;" oninput="myCountFunction()"></input></td>
-                            <td>st. (antal solpaneler)</td>
+                            <td class="text-right pr-3">Bredd</td>
+                            <td><input type="number" min="1" max="100" id="roofWidth" style="width: 100px;" oninput="calcRoofArea()"><br>
+                            <td>m</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right pr-3">Längd</td>
+                            <td><input type="number" min="1" max="100" id="roofLength" style="width: 100px;" oninput="calcRoofArea()"></input></td>
+                            <td>m</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right pr-3">Möjlig yta</td>
+                            <td><span class="text-right" id="roofArea"></span></td>
+                            <td>m<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left pr-3"><strong>Panelkonfiguration</strong></td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right pr-3">Antal paneler</td>
+                            <td><span id="nbrOfPanels"></span><br>
+                            <td>st.</td>
                         </tr>
                         <tr>
                             <td class="text-right pr-3">Solpanelsyta</td>
-                            <td><input type="number" min="1" max="100" id="totalPanelArea" style="width: 100px;"></input></td>
+                            <td><span id="totalPanelArea"></span></td>
                             <td>m<sup>2</sup> (total solpanelsyta)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right pr-3">Total nominell effekt</td>
+                            <td><span class="text-right" id="totalPower"></span></td>
+                            <td>kW (produktion)</td>
                         </tr>
                     </tbody>
                 </table>
@@ -104,14 +133,38 @@
     <script>
         var panelArea;
         var totalPanelArea;
+        var roofArea;
         var area;
         var count; 
+        var nbrOfPanels;
+        var calcPower;
 
         //funkar
-        function myPanelAreaFunction() {
+        function calcPanelArea() {
             panelArea = parseFloat(panelWidth.value) * parseFloat(panelLength.value);
+            panelArea = panelArea.toFixed(2);
             if (panelArea > 0 ) {
                 document.getElementById("panelArea").innerHTML = panelArea.toString();
+            }
+        }
+
+        function calcRoofArea() {
+            roofArea = parseFloat(roofWidth.value) * parseFloat(roofLength.value);
+            if (roofArea > 0 ) {
+                document.getElementById("roofArea").innerHTML = roofArea.toString();
+                nbrOfPanels = parseInt(roofArea / panelArea);
+                document.getElementById("nbrOfPanels").innerHTML = nbrOfPanels.toString();
+
+                totalPanelArea = nbrOfPanels * panelArea;
+                totalPanelArea = totalPanelArea.toFixed(2);
+                document.getElementById("totalPanelArea").innerHTML = totalPanelArea.toString();
+
+            }
+            calcPower = parseInt(power.value);
+            if (calcPower > 0) {
+                totalPower = (nbrOfPanels * calcPower) / 1000;
+                totalPower = totalPower.toFixed(2);
+                document.getElementById("totalPower").innerHTML = totalPower.toString();
             }
         }
 
