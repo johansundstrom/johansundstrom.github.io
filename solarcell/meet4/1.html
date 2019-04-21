@@ -164,6 +164,7 @@
             if (calcPower > 0) {
                 totalPower = (nbrOfPanels * calcPower) / 1000;
                 totalPower = totalPower.toFixed(2);
+                document.cookie = "totalPower=" + totalPower;
                 document.getElementById("totalPower").innerHTML = totalPower.toString();
             }
         }
@@ -186,6 +187,8 @@
             totalPanelArea = parseFloat(panelArea) * parseFloat(count);
             document.getElementById("totalPanelArea").value = totalPanelArea.toString();
         }
+
+
     </script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

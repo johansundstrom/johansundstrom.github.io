@@ -43,8 +43,18 @@
             <p class="lead">Övning (Ver. 3)</p>
 
             <div class="border border-primary p-2">
-                <table>
+                <table class="table-bordered">
                     <tbody>
+                        <!--tr>
+                            <td class="text-left pr-3"><strong>Föregående sida</strong></td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right pr-3">Total Nominell Effekt</td>
+                            <td><input type="number" min="-180" max="180" id="totPow" style="width: 100px;"></td>
+                            <td class="text-left pl-3">kWh</td>
+                        </tr-->
                         <tr>
                             <td class="text-left pr-3"><strong>Elförsäljning</strong></td>
                             <td>&nbsp;</td>
@@ -81,14 +91,14 @@
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
-                            <td class="text-left pr-3">Tillbaks på dekl.</td>
+                            <td class="text-right pr-3">Tillbaks på dekl.</td>
                             <td><input type="number" min="-180" max="180" id="taxReturn" value="0.60" style="width: 100px;" oninput="sumSoldEnergy()"></td>
                             <td class="text-left pl-3">SEK (max 18 000SEK/år)</td>
                         </tr>
                         <tr>
-                            <td class="text-right pr-3">Summa</td>
-                            <td><span class="text-right" id="sum"></span></td>
-                            <td class="text-left pl-3">SEK/kWh</td>
+                            <td class="text-right lead pr-3 mt-3"><strong>Summa:</strong></td>
+                            <td><strong><span class="text-right lead" id="sum"></span></strong></td>
+                            <td class="text-left pl-3 lead"><strong>SEK/kWh</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -128,14 +138,18 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    
     <script>
         var sum;
         var myValue;
         var soldEnergy;
+        var totalPower;
 
         $(document).ready(function(){
-            console.log('running...');
             sumSoldEnergy();
+            // var totalPower = document.cookie;
+            // document.getElementById("totPow").value = totalPower.toString();
+            // console.log(totalPower);
         });
 
         function sumSoldEnergy() {
@@ -148,7 +162,6 @@
             d = parseFloat(taxReturn.value);
 
             soldEnergy = a + b + c + d;
-            console.log(a, b, c, d);
             soldEnergy = soldEnergy.toFixed(2);
             soldEnergy = soldEnergy.toString()
             if (true) {
