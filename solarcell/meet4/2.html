@@ -53,7 +53,7 @@
                         <tr>
                             <td class="text-right pr-3">Pris såld kWh</td>
                             <td><input type="number" min="-180" max="180" id="sell" style="width: 100px;" oninput="sumSoldEnergy()"></td>
-                            <td class="text-left pl-3">SEK</td>
+                            <td class="text-left pl-3">SEK, &nbsp;(inkl. moms <input type="checkbox" id="c1" onchange="tax('c1', 'sell')"> )</td>
                         </tr>
                         <tr>
                             <td class="text-left pr-3"><strong>Nätleverans</strong></td>
@@ -63,7 +63,7 @@
                         <tr>
                             <td class="text-right pr-3">Mikroproduktion</td>
                             <td><input type="number" min="-180" max="180" id="deliver" value="0.05" style="width: 100px;" oninput="sumSoldEnergy()"></td>
-                            <td class="text-left pl-3">SEK (EEM)</td>
+                            <td class="text-left pl-3">SEK (EEM), &nbsp;(inkl. moms <input type="checkbox" id="c2" onchange="tax('c2', 'deliver')"> )</td>
                         </tr>
                         <tr>
                             <td class="text-left pr-3"><strong>Elcertifikat</strong></td>
@@ -73,7 +73,7 @@
                         <tr>
                             <td class="text-right pr-3">Energimyndigheten</td>
                             <td><input type="number" min="-180" max="180" id="certificate" value="0.11" style="width: 100px;" oninput="sumSoldEnergy()"></td>
-                            <td class="text-left pl-3">SEK (Snittpris mars)</td>
+                            <td class="text-left pl-3">SEK (Snittpris mars), &nbsp;(inkl. moms <input type="checkbox" checked id="c3" onchange="tax('c3', 'certificate')"> )</td>
                         </tr>
                         <tr>
                             <td class="text-left pr-3"><strong>Skattereduktion</strong></td>
@@ -82,7 +82,7 @@
                         </tr>
                         <tr>
                             <td class="text-left pr-3">Tillbaks på dekl.</td>
-                            <td><input type="number" min="-180" max="180" id="tax" value="0.60" style="width: 100px;" oninput="sumSoldEnergy()"></td>
+                            <td><input type="number" min="-180" max="180" id="taxReturn" value="0.60" style="width: 100px;" oninput="sumSoldEnergy()"></td>
                             <td class="text-left pl-3">SEK (max 18 000SEK/år)</td>
                         </tr>
                         <tr>
@@ -118,15 +118,32 @@
 
     <script>
     var sum;
+    var myValue;
+    var soldEnergy;
 
     function sumSoldEnergy() {
-        soldEnergy = parseFloat(sell.value) + parseFloat(deliver.value) + parseFloat(certificate.value) + parseFloat(tax.value);
+        soldEnergy = parseFloat(sell.value) + parseFloat(deliver.value) + parseFloat(certificate.value) + parseFloat(taxReturn.value);
         soldEnergy = soldEnergy.toFixed(2);
         if (soldEnergy > 0 ) {
             document.getElementById("sum").innerHTML = soldEnergy.toString();
         }
     }
-    
+
+    function tax(selector, target) {
+        var mySel = document.getElementById(selector).checked;
+        var myTar = document.getElementById(target).value;
+        if (mySel) {
+            x = myTar * 1.25;
+            x = x.toFixed(2)
+            document.getElementById(target).value = x.toString();
+            sumSoldEnergy();
+        } else {
+            x = myTar * 0.8;
+            x = x.toFixed(2)
+            document.getElementById(target).value = x.toString();
+            sumSoldEnergy();
+        }
+    }
     </script>
 
     <!-- Optional JavaScript -->
