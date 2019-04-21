@@ -116,35 +116,6 @@
         </div>
     </div>
 
-    <script>
-    var sum;
-    var myValue;
-    var soldEnergy;
-
-    function sumSoldEnergy() {
-        soldEnergy = parseFloat(sell.value) + parseFloat(deliver.value) + parseFloat(certificate.value) + parseFloat(taxReturn.value);
-        soldEnergy = soldEnergy.toFixed(2);
-        if (soldEnergy > 0 ) {
-            document.getElementById("sum").innerHTML = soldEnergy.toString();
-        }
-    }
-
-    function tax(selector, target) {
-        var mySel = document.getElementById(selector).checked;
-        var myTar = document.getElementById(target).value;
-        if (mySel) {
-            x = myTar * 1.25;
-            x = x.toFixed(2)
-            document.getElementById(target).value = x.toString();
-            sumSoldEnergy();
-        } else {
-            x = myTar * 0.8;
-            x = x.toFixed(2)
-            document.getElementById(target).value = x.toString();
-            sumSoldEnergy();
-        }
-    }
-    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -157,6 +128,50 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script>
+        var sum;
+        var myValue;
+        var soldEnergy;
+
+        $(document).ready(function(){
+            console.log('running...');
+            sumSoldEnergy();
+        });
+
+        function sumSoldEnergy() {
+            a = parseFloat(sell.value);
+            if (isNaN(a)) {
+                a = 0;
+            }
+            b = parseFloat(deliver.value);
+            c = parseFloat(certificate.value);
+            d = parseFloat(taxReturn.value);
+
+            soldEnergy = a + b + c + d;
+            console.log(a, b, c, d);
+            soldEnergy = soldEnergy.toFixed(2);
+            soldEnergy = soldEnergy.toString()
+            if (true) {
+                document.getElementById("sum").innerHTML = soldEnergy;
+            }
+        }
+
+        function tax(selector, target) {
+            var mySel = document.getElementById(selector).checked;
+            var myTar = document.getElementById(target).value;
+            if (mySel) {
+                x = myTar * 1.25;
+                x = x.toFixed(2)
+                document.getElementById(target).value = x.toString();
+                sumSoldEnergy();
+            } else {
+                x = myTar * 0.8;
+                x = x.toFixed(2)
+                document.getElementById(target).value = x.toString();
+                sumSoldEnergy();
+            }
+        }
+    </script>
 </body>
 
 </html>
