@@ -154,11 +154,12 @@
 
         function sumSoldEnergy() {
             var a, b, c, d;
-            console.log(sell.value);
+
             a = sell.value;
+            console.log('a: ' + a);
             a = a.replace(',', '.');
             a = parseFloat(a);
-            console.log(a);
+            console.log('parsefloat a : ' + a);
             if (isNaN(a)) {
                 a = 0;
             }
