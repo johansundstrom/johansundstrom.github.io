@@ -153,7 +153,9 @@
         });
 
         function sumSoldEnergy() {
+            console.log(sell.value);
             a = parseFloat(sell.value.replace(/\,/g,'.'));
+            console.log(a);
             if (isNaN(a)) {
                 a = 0;
             }
