@@ -12,24 +12,27 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-        .nav-link {
-            padding: .2rem;
-        }
-
-        .back {
-            font-family: arial;
-            font-size: .7em;
-        }
-        .jumbotron {
-            background: linear-gradient(to right, #d589f3 20%,#f7f5f1 100%); 
-        }
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-    <p class="back text-muted lead ml-2 mb-2"><a href="/index.html">
-    << Tillbaka</a> </p> <div class="jumbotron jumbotron-fluid">
+    <p class="back text-muted lead ml-2 mb-2"><a href="/index.html"><< Tillbaka</a> </p> 
+
+    <nav class="ml-3 mt-3 float-left">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="index.html"><i class="material-icons">keyboard_arrow_left</i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="index.html"><i class="material-icons">home</i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="2.html"><i class="material-icons">keyboard_arrow_right</i></a>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">1. Förutsättningar</h1>
             <hr class="my-2">
@@ -37,7 +40,7 @@
                 <li>Ha en uppfattning om takytan</li>
                 <li>Välj solpanel</li>
             </ul>
-            <p class="lead">Övning (ver. 3)</p>
+            <p class="lead">Övning (ver. 3.1)</p>
 
             <div class="border border-primary p-2">
                 <table border="0">
@@ -50,22 +53,22 @@
                         <tr>
                             <td class="text-right pr-3">Nominell effekt</td>
                             <td><input type="number" min="1" max="400" id="power" style="width: 100px;">
-                            <td class="text-left">W</td>
+                            <td class="text-left">Wp</td>
                         </tr>
                         <tr>
                             <td class="text-right pr-3">Bredd</td>
                             <td><input type="number" min="0" max="2" id="panelWidth" style="width: 100px;" oninput="calcPanelArea()">
-                            <td class="text-left">m (bredden på en solpanel)</td>
+                            <td class="text-left">m</td>
                         </tr>
                         <tr>
                             <td class="text-right pr-3">Längd</td>
                             <td><input type="number" min="0" max="2" id="panelLength" style="width: 100px;" oninput="calcPanelArea()"><br>
-                            <td>m (längden på en solpanel)</td>
+                            <td>m</td>
                         </tr>
                         <tr>
-                            <td class="text-right pr-3">En solpanel</td>
+                            <td class="text-right pr-3">Beräknad yta</td>
                             <td><span id="panelArea"></span></td>
-                            <td>m<sup>2</sup> (en solpanels yta)</td>
+                            <td>m<sup>2</sup></td>
                         </tr>
                         <tr>
                             <td class="text-left pr-3"><strong>Takyta</strong></td>
@@ -114,21 +117,6 @@
                 <div id="pic"></div>
             </div>
 
-            <hr class="my-2 mb-4">
-
-            <nav class="float-right">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html"><i class="material-icons">keyboard_arrow_left</i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html"><i class="material-icons">home</i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="2.html"><i class="material-icons">keyboard_arrow_right</i></a>
-                    </li>
-                </ul>
-            </nav>
         </div>
     </div>
 
@@ -144,6 +132,7 @@
 
         //funkar
         function calcPanelArea() {
+            console.log('dfdf')
             panelArea = parseFloat(panelWidth.value) * parseFloat(panelLength.value);
             panelArea = panelArea.toFixed(2);
             if (panelArea > 0 ) {
@@ -161,8 +150,9 @@
                 totalPanelArea = nbrOfPanels * panelArea;
                 totalPanelArea = totalPanelArea.toFixed(2);
                 document.getElementById("totalPanelArea").innerHTML = totalPanelArea.toString();
-
             }
+        
+
             calcPower = parseInt(power.value);
             if (calcPower > 0) {
                 totalPower = (nbrOfPanels * calcPower) / 1000;
@@ -170,6 +160,7 @@
                 document.cookie = "totalPower=" + totalPower;
                 document.getElementById("totalPower").innerHTML = totalPower.toString();
             }
+        }
 
         function myAreaFunction() {
             //var temp = parseFloat(area) / parseFloat(document.getElementById("panelArea").value);
@@ -186,9 +177,8 @@
             area.value = temp.toString();
 
             totalPanelArea = parseFloat(panelArea) * parseFloat(count);
-            document.getElementById("totalPanelArea").value = totalPanelArea.toString();
+            document.getElementById('totalPanelArea').value = totalPanelArea.toString();
         }
-
 
     </script>
 

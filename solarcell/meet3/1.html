@@ -12,24 +12,28 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-        .nav-link {
-            padding: .2rem;
-        }
-
-        .back {
-            font-family: arial;
-            font-size: .7em;
-        }
-        .jumbotron {
-            background: linear-gradient(to right, #f3c189 20%,#f7f5f1 100%); 
-        }
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
     <p class="back text-muted lead ml-2 mb-2"><a href="/index.html">
-    << Tillbaka</a> </p> <div class="jumbotron jumbotron-fluid">
+    << Tillbaka</a> </p> 
+
+    <nav class="ml-3 mt-3 float-left">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="index.html"><i class="material-icons">keyboard_arrow_left</i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="index.html"><i class="material-icons">home</i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="2.html"><i class="material-icons">keyboard_arrow_right</i></a>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">1. Effekt</h1>
             <hr class="my-2">
@@ -39,14 +43,15 @@
                 <li>Effekt - Watt, (W), P, P=UI</li>
                 <li>Prefix - mikro (µ), milli (m), x, kilo (k), mega (M), Tera (T)</li>
             </ul>
+            <img src="../../images/ohms-law.gif" width="40%" alt="">
             <p class="lead">Övning</p>
             <ol class="lead">
-                <li>Vilken säkring till 2kW? (6A, 10A, 16A)
+                <li>Vilken säkring till 2kW i hemmet? (6A, 10A, 16A)
                     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#A1" aria-expanded="false" aria-controls="collapseExample">
                         Facit
                     </button>
                     <div class="collapse" id="A1">
-                        <div class="card card-body">
+                        <div class="card card-body m-2">
                             P / U = I<br>
                             2000W / 230V = 8.69A - 10A 
                         </div>
@@ -57,7 +62,7 @@
                         Facit
                     </button>
                     <div class="collapse" id="A2">
-                        <div class="card card-body">
+                        <div class="card card-body m-2">
                             1mA = 0.001A
                         </div>
                     </div>
@@ -67,7 +72,7 @@
                         Facit
                     </button>
                     <div class="collapse" id="A3">
-                        <div class="card card-body">
+                        <div class="card card-body m-2">
                             P / U = I<br>
                             60W / 12V = 5A
                         </div>
@@ -78,7 +83,7 @@
                         Facit
                     </button>
                     <div class="collapse" id="A4">
-                        <div class="card card-body">
+                        <div class="card card-body m-2">
                             P = U x I<br>
                             P = 24V x 9A<br>
                             216W
@@ -90,7 +95,7 @@
                         Facit
                     </button>
                     <div class="collapse" id="A5">
-                        <div class="card card-body">
+                        <div class="card card-body m-2">
                             KOPPLA = 17W<br>
                             1 st. 10W Halogen = 20W<br>
                             Svar: mindre
@@ -98,21 +103,7 @@
                     </div>
                 </li>
             </ol>
-            <hr class="my-2 mb-4">
-
-            <nav class="float-right">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html"><i class="material-icons">keyboard_arrow_left</i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html"><i class="material-icons">home</i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="2.html"><i class="material-icons">keyboard_arrow_right</i></a>
-                    </li>
-                </ul>
-            </nav>
+           
         </div>
     </div>
 

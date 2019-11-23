@@ -12,25 +12,28 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-        .nav-link {
-            padding: .2rem;
-        }
-
-        .back {
-            font-family: arial;
-            font-size: .7em;
-        }
-        .jumbotron {
-            background: linear-gradient(to right, #d589f3 20%,#f7f5f1 100%); 
-        }
-        .initiallyHidden { display: none; }
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
     <p class="back text-muted lead ml-2 mb-2"><a href="/index.html">
-    << Tillbaka</a> </p> <div class="jumbotron jumbotron-fluid">
+    << Tillbaka</a> </p> 
+    
+    <nav class="ml-3 mt-3 float-left">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="1.html"><i class="material-icons">keyboard_arrow_left</i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="index.html"><i class="material-icons">home</i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="3.html"><i class="material-icons">keyboard_arrow_right</i></a>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">2. Beräkna försäljning</h1>
             <hr class="my-2">
@@ -40,7 +43,7 @@
                 <li>Elcertifikat</li>
                 <li>Skattereduktion</li>
             </ul>
-            <p class="lead">Övning (Ver. 3)</p>
+            <p class="lead">Övning (Ver. 3.1 /JS)</p>
 
             <div class="border border-primary p-2">
                 <table class="table-bordered">
@@ -93,12 +96,12 @@
                         <tr>
                             <td class="text-right pr-3">Tillbaks på dekl.</td>
                             <td><input type="number" min="-180" max="180" id="taxReturn" value="0.60" style="width: 100px;" oninput="sumSoldEnergy()"></td>
-                            <td class="text-left pl-3">SEK (max 18 000SEK/år)</td>
+                            <td class="text-left pl-3">SEK (max 30 000SEK/år)</td>
                         </tr>
                         <tr>
                             <td class="text-right lead pr-3 mt-3"><strong>Summa:</strong></td>
                             <td><strong><span class="text-right lead" id="sum"></span></strong></td>
-                            <td class="text-left pl-3 lead"><strong>SEK/kWh</strong></td>
+                            <td class="text-left pl-3 lead"><strong>SEK/kWh (inkl. moms)</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -106,23 +109,6 @@
 
             <br>
 
-
-
-            <hr class="my-2 mb-4">
-
-            <nav class="float-right">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="1.html"><i class="material-icons">keyboard_arrow_left</i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html"><i class="material-icons">home</i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="3.html"><i class="material-icons">keyboard_arrow_right</i></a>
-                    </li>
-                </ul>
-            </nav>
         </div>
     </div>
 

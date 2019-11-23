@@ -1,0 +1,16 @@
+
+.nav-link {
+    padding: .2rem;
+}
+
+.back {
+    font-family: arial;
+    font-size: .7em;
+}
+
+.jumbotron {
+    background-color: #faebd7;
+    background: linear-gradient(to right, #fde9cf 0%,#faf6f2 100%);
+    height: 100vh;
+}
+.initiallyHidden { display: none; }
