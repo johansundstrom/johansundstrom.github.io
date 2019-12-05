@@ -13,6 +13,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
+    <script>
+        $(document).ready(function(){
+          $("button").click(function(){
+            $("#A1").toggle();
+          });
+        });
+    </script>
 </head>
 
 <body>
@@ -27,22 +34,72 @@
             <li class="nav-item">
                 <a class="nav-link active" href="index.html"><i class="material-icons">home</i></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="4.html"><i class="material-icons">keyboard_arrow_right</i></a>
-            </li>
         </ul>
     </nav>
     
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4">3. Solpanelsstudie</h1>
+            <h1 class="display-4">3. Beräkna produktion</h1>
             <hr class="my-2">
             <ul class="lead">
-                <li><a href="https://sunlux.se/solpanel-300w-ms-300-60m-black.html">Solpanel 300W (MS-300 60M BLACK)</a></li>
-                <li><a href="https://www.solarwatt.com/solar-panels/glass-glass">SolarWatt</a></li>
-                <li><a href="https://us.sunpower.com/sites/default/files/media-library/data-sheets/ds-x21-series-335-345-residential-solar-panels.pdf">SunPower</a></li>
+                <li>Mät Azimuth</li>
+                <li>Ta reda på takvinkel</li>
+                <li>Försäljning av producerad el (nätnytta) - <a href="http://www.prosument.se/" class="text-dark">Sälj el</a></li>
+                <li><a target="_blank" href="http://re.jrc.ec.europa.eu/pvg_tools/en/tools.html" class="text-dark">Hämta in solinstrålningen</a></li>
+                <li>Årlig produktion (enligt PVGIS)</li>
+                <li>Årlig instrålning (enligt PVGIS)</li>
             </ul>
-           
+            <p class="lead">Övning (Ver. 2)</p>
+
+            <div class="border border-primary p-2">
+                <table border="0">
+                    <tbody>
+                        <tr>
+                            <td class="text-right pr-3">Azimuth</td>
+                            <td><input type="number" min="-180" max="180" id="azimuth" style="width: 100px;"></td>
+                            <td class="text-left pl-3">grader från söder</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right pr-3">Taklutning</td>
+                            <td><input type="number" min="0" max="90" id="angle" style="width: 100px;"></td>
+                            <td class="text-left pl-3">grader</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right pr-3">Årlig produktion</td>
+                            <td><input type="number" min="1000" max="100000" id="prod" style="width: 100px;"></td>
+                            <td class="text-left pl-3">kWh (enligt PVGIS)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <br>
+
+            <div class="border border-primary p-2">
+                <table border="0">
+    
+                    <tbody>
+
+                        <tr>
+                            <td class="text-right pr-3">Elförsäljning</td>
+                            <td><input type="number" min="0.1" max="5" id="sale" style="width: 100px;"></td>
+                            <td>SEK/kWh</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right pr-3">Elcertifikat</td>
+                            <td><input type="number" min="0.1" max="5" id="cert" style="width: 100px;" oninput="myAreaFunction()"><br>
+                            <td>m<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td class="text-right pr-3">Investeringskostnad</td>
+                            <td><input type="number" min="1" max="100" id="count" style="width: 100px;" oninput="myCountFunction()"></input></td>
+                            <td>st.</sup></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
         </div>
     </div>
 
