@@ -10,13 +10,15 @@
     <!--Material Google-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-    <p class="back text-muted lead ml-2 mb-2"><a href="/index.html"><< Tillbaka</a> </p> 
+    <p class="back text-muted lead ml-2 mb-2">
+        <a href="/index.html">
+            << Tillbaka</a>
+    </p>
 
     <nav class="ml-3 mt-3 float-left">
         <ul class="nav">
@@ -31,7 +33,7 @@
             </li>
         </ul>
     </nav>
-    
+
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">1. Förutsättningar</h1>
@@ -40,7 +42,7 @@
                 <li>Ha en uppfattning om takytan</li>
                 <li>Välj solpanel</li>
             </ul>
-            <p class="lead">Övning (ver. 3.1)</p>
+            <p class="lead">Övning (Ver. 3.3 /JohanS)</p>
 
             <div class="border border-primary p-2">
                 <table border="0">
@@ -52,22 +54,22 @@
                         </tr>
                         <tr>
                             <td class="text-right pr-3">Nominell effekt</td>
-                            <td><input type="number" min="1" max="400" id="power" style="width: 100px;">
+                            <td><input type="number" min="1" max="400" id="power" style="width: 100px;"></td>
                             <td class="text-left">Wp</td>
                         </tr>
                         <tr>
                             <td class="text-right pr-3">Bredd</td>
-                            <td><input type="number" min="0" max="2" id="panelWidth" style="width: 100px;" oninput="calcPanelArea()">
+                            <td><input type="number" min="0" max="2" id="panelWidth" style="width: 100px;" oninput="calcPanelArea()"></td>
                             <td class="text-left">m</td>
                         </tr>
                         <tr>
                             <td class="text-right pr-3">Längd</td>
-                            <td><input type="number" min="0" max="2" id="panelLength" style="width: 100px;" oninput="calcPanelArea()"><br>
+                            <td><input type="number" min="0" max="2" id="panelLength" style="width: 100px;" oninput="calcPanelArea()"></td>
                             <td>m</td>
                         </tr>
                         <tr>
                             <td class="text-right pr-3">Beräknad yta</td>
-                            <td><span id="panelArea"></span></td>
+                            <td><strong><span id="panelArea"></span></strong></td>
                             <td>m<sup>2</sup></td>
                         </tr>
                         <tr>
@@ -77,17 +79,17 @@
                         </tr>
                         <tr>
                             <td class="text-right pr-3">Bredd</td>
-                            <td><input type="number" min="1" max="100" id="roofWidth" style="width: 100px;" oninput="calcRoofArea()"><br>
+                            <td><input type="number" min="1" max="100" id="roofWidth" style="width: 100px;" oninput="calcRoofArea()"></td>
                             <td>m</td>
                         </tr>
                         <tr>
                             <td class="text-right pr-3">Längd</td>
-                            <td><input type="number" min="1" max="100" id="roofLength" style="width: 100px;" oninput="calcRoofArea()"></input></td>
+                            <td><input type="number" min="1" max="100" id="roofLength" style="width: 100px;" oninput="calcRoofArea()"></td>
                             <td>m</td>
                         </tr>
                         <tr>
                             <td class="text-right pr-3">Möjlig yta</td>
-                            <td><span class="text-right" id="roofArea"></span></td>
+                            <td><strong><span class="text-right" id="roofArea"></span></strong></td>
                             <td>m<sup>2</sup></td>
                         </tr>
                         <tr>
@@ -97,7 +99,7 @@
                         </tr>
                         <tr>
                             <td class="text-right pr-3">Antal paneler</td>
-                            <td><span id="nbrOfPanels"></span><br>
+                            <td><span id="nbrOfPanels"></span></td>
                             <td>st.</td>
                         </tr>
                         <tr>
@@ -107,7 +109,7 @@
                         </tr>
                         <tr>
                             <td class="text-right pr-3">Total nominell effekt</td>
-                            <td><span class="text-right" id="totalPower"></span></td>
+                            <td><strong><span class="text-right" id="totalPower"></span></strong></td>
                             <td>kW (produktion)</td>
                         </tr>
                     </tbody>
@@ -126,23 +128,22 @@
         var totalPanelArea;
         var roofArea;
         var area;
-        var count; 
+        var count;
         var nbrOfPanels;
         var calcPower;
 
         //funkar
         function calcPanelArea() {
-            console.log('dfdf')
             panelArea = parseFloat(panelWidth.value) * parseFloat(panelLength.value);
             panelArea = panelArea.toFixed(2);
-            if (panelArea > 0 ) {
+            if (panelArea > 0) {
                 document.getElementById("panelArea").innerHTML = panelArea.toString();
             }
         }
 
         function calcRoofArea() {
             roofArea = parseFloat(roofWidth.value) * parseFloat(roofLength.value);
-            if (roofArea > 0 ) {
+            if (roofArea > 0) {
                 document.getElementById("roofArea").innerHTML = roofArea.toString();
                 nbrOfPanels = parseInt(roofArea / panelArea);
                 document.getElementById("nbrOfPanels").innerHTML = nbrOfPanels.toString();
@@ -151,13 +152,15 @@
                 totalPanelArea = totalPanelArea.toFixed(2);
                 document.getElementById("totalPanelArea").innerHTML = totalPanelArea.toString();
             }
-        
+
 
             calcPower = parseInt(power.value);
             if (calcPower > 0) {
                 totalPower = (nbrOfPanels * calcPower) / 1000;
                 totalPower = totalPower.toFixed(2);
-                document.cookie = "totalPower=" + totalPower;
+                document.cookie = 'totalPower=; sumSellPrice=; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+                //setCookie(totalPower, parseFloat(totalPower), 1);
+                document.cookie = 'totalPower=' + totalPower + '; path=/';
                 document.getElementById("totalPower").innerHTML = totalPower.toString();
             }
         }
@@ -180,18 +183,18 @@
             document.getElementById('totalPanelArea').value = totalPanelArea.toString();
         }
 
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
     </script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>

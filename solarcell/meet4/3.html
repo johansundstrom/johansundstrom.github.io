@@ -10,22 +10,17 @@
     <!--Material Google-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
-    <script>
-        $(document).ready(function(){
-          $("button").click(function(){
-            $("#A1").toggle();
-          });
-        });
-    </script>
+
 </head>
 
 <body>
-    <p class="back text-muted lead ml-2 mb-2"><a href="/index.html">
-    << Tillbaka</a> </p> 
-    
+    <p class="back text-muted lead ml-2 mb-2">
+        <a href="/index.html">
+            << Tillbaka</a>
+    </p>
+
     <nav class="ml-3 mt-3 float-left">
         <ul class="nav">
             <li class="nav-item">
@@ -36,7 +31,7 @@
             </li>
         </ul>
     </nav>
-    
+
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">3. Beräkna produktion</h1>
@@ -44,12 +39,12 @@
             <ul class="lead">
                 <li>Mät Azimuth</li>
                 <li>Ta reda på takvinkel</li>
-                <li>Försäljning av producerad el (nätnytta) - <a href="http://www.prosument.se/" class="text-dark">Sälj el</a></li>
+                <li>Försäljning av producerad el (nätnytta) - <a target="_blank" href="http://www.prosument.se/" class="text-dark">Sälj el</a></li>
                 <li><a target="_blank" href="http://re.jrc.ec.europa.eu/pvg_tools/en/tools.html" class="text-dark">Hämta in solinstrålningen</a></li>
                 <li>Årlig produktion (enligt PVGIS)</li>
                 <li>Årlig instrålning (enligt PVGIS)</li>
             </ul>
-            <p class="lead">Övning (Ver. 2)</p>
+            <p class="lead">Övning (Ver. 3.3 /JohanS)</p>
 
             <div class="border border-primary p-2">
                 <table border="0">
@@ -77,23 +72,25 @@
 
             <div class="border border-primary p-2">
                 <table border="0">
-    
+
                     <tbody>
 
                         <tr>
                             <td class="text-right pr-3">Elförsäljning</td>
-                            <td><input type="number" min="0.1" max="5" id="sale" style="width: 100px;"></td>
+                            <td><input type="number" min="0.1" max="5" id="sumSellPrice" style="width: 100px;"></td>
                             <td>SEK/kWh</td>
                         </tr>
                         <tr>
                             <td class="text-right pr-3">Elcertifikat</td>
-                            <td><input type="number" min="0.1" max="5" id="cert" style="width: 100px;" oninput="myAreaFunction()"><br>
+                            <td><input type="number" min="0.1" max="5" id="cert" style="width: 100px;" oninput="myAreaFunction()"></td>
                             <td>m<sup>2</sup></td>
                         </tr>
                         <tr>
                             <td class="text-right pr-3">Investeringskostnad</td>
-                            <td><input type="number" min="1" max="100" id="count" style="width: 100px;" oninput="myCountFunction()"></input></td>
-                            <td>st.</sup></td>
+                            <td><input type="number" min="1" max="100" id="count" style="width: 100px;" oninput="myCountFunction()">
+                            </td>
+                            <td>st.
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -105,15 +102,38 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+            var totalPower = readCookie('totalPower');
+            var sumSellPrice = readCookie('sumSellPrice');
+
+            //document.getElementById('sale') = sumSellPrice;
+            document.getElementById('sumSellPrice').value = sumSellPrice.toString();
+            //document.getElementById('sumSellPrice').innerHTML = 'Johan';
+
+            console.log(sumSellPrice.toString());
+            // document.getElementById("totPow").value = totalPower.toString();
+
+            //$("button").click(function() {
+            //    $("#A1").toggle();
+            //});
+        });
+
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+    </script>
 </body>
 
 </html>
