@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a class="navbar-brand" href="../">Johan Sundström</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <!--ul class="navbar-nav mr-auto mt-2 mt-lg-0"-->
+            <ul class="navbar-nav pr-5">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Om G I T</h1>
+        <h2>Git och github</h2>
+        <figure class="figure">
+            <img src="https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png" width="10%" height="10%" />
+            <figcaption class="figure-caption">(bild: git.scm.com)</figcaption>
+        </figure>
+        <ul>
+            <li>Som ersättning för omöjliga versionshanteringar på filnivå skapades Versionshanteringsprogram</li>
+            <li>Git är ett versionshanteringsprogram VCS (Version Control System), _Subversion_ (SVN) är ett annat</li>
+            <li>Versionshantering innebär stöd för traceability, möjligheten att backa till tidigare versioner</li>
+            <li>Git är inte filversioner</li>
+            <li>Stödjer flera användare i ett team eller projekt genom branch-based workflow (branching och merging)
+            </li>
+            <li>Är de facto standard och benämns vara lightwheight</li>
+            <li>Open source, skapat av Linus Thorvalds 2005</li>
+            <li>Kan vara svårt att lära sig</li>
+            <li>Mål: master branch - always deployable - deploy i Master branch, utveckling i annan branch</li>
+            <li>git is British slang för "pig headed, think they are always correct, argumentative" wiki</li>
+            <li>Läs mer på <a
+                    href="https://www.git-tower.com/learn/git/ebook">https://www.git-tower.com/learn/git/ebook</a> eller
+                <a href="https://git-scm.com/book/en/v2/">https://git-scm.com/book/en/v2/</a>
+            </li>
+            <li>Lär/träna Git interaktivt online på <a href="https://try.github.io">https://try.github.io</a></li>
+        </ul>
+
+
+        <figure class="figure"></figure>
+        <img src="/images/git/Octocat.png" width="15%" height="15%" />
+        <figcaption class="figure-caption">(bild: github.com)</figcaption>
+        </figure>
+
+        <ul>
+            <li>Centrala datalagringsplatser (fil- och databaser) kallas repository eller repo's</li>
+            <li>Github är ett publikt repository och kan nås via webb</li>
+            <li>Principen är öppen lagring gratis - betala för privat</li>
+            <li>Git är inte github</li>
+        </ul>
+
+        <figure class="figure">
+            <img src="http://1.bp.blogspot.com/-WY2YpNr3W6g/UY6tZAc-H3I/AAAAAAAABLY/xJ9x3wIY8V8/s1600/Github2.png"
+                width="30%" height="30%" />
+            <figcaption class="figure-caption">(bild: jahya.net)</figcaption>
+        </figure>
+
+
+
+        <h1>Kom igång</h1>
+        <h2>Installera Git</h2>
+
+        <pre>http://git-scm.com/download</pre>
+        <ul>
+            <li>Installera med förvalda inställningar</li>
+            <li>GUI tools (rekommenderas ej)</li>
+        </ul>
+
+        <h2>Git och VS Code <img src="https://image.apphit.com/image/visual-studio-code/visual-studio-code-logo.png"
+                width="3%" height="3%" /></h2>
+        <ul>
+            <li>Git krävs för tillgång till Git i VS Code</li>
+        </ul>
+        <pre>https://code.visualstudio.com/download</pre>
+        <ul>
+            <li>Med Visual Studio Code finns möjlighet att arbeta med terminal eller GUI</li>
+        </ul>
+
+
+        <h1>Konfigurera Git från Bash/PowerShell/Terminal/DOS-prompt/Cmder</h1>
+        <h2>Förutsättningar</h2>
+        <figcaption>Git installerar Bash-kommandoprompt (Linuxkommandon)</figcaption>
+        <pre>http://git-scm.com/download</pre>
+
+        <h2>Windows</h2>
+        <figcaption>Bättre Windowskonsol</figcaption>
+        <pre>http://cmder.net</pre>
+
+        <h2>VS Code</h2>
+        <ul>
+            <li>Öppna VS Code's interna terminalfönster (Windows: CTRL-ö, Linux: CTRL-Shft-´)</li>
+        </ul>
+
+        <h2>Mac</h2>
+        <ul>
+            <li>Starta Terminal</li>
+        </ul>
+
+        <h2>Git</h2>
+        <ol>
+            <li>Öppna terminal och förbered plats och mapp i filsystemet</li>
+        </ol>
+        <pre>
+cd [mapp]
+mkdir [mapp]</pre>
+
+        <figcaption>Skapa lokal repository i dolda undermappen <strong>.git</strong></figcaption>
+        <pre>git init</pre>
+
+        <figcaption>Tillägget <strong>--global</strong> ger åtkomst i alla projektmappar</figcaption>
+        <pre>
+git config --global user.name "johansundstrom"
+git config --global user.email "johan.sundstrom@mdh.se"</pre>
+  
+        <figcaption>Visa användarnamn</figcaption>
+        <pre>git config user.name</pre>
+
+        <figcaption>Visar epostadress</figcaption>
+        <pre>git config user.email</pre>
+
+        <figcaption>Listar inställningar</figcaption>
+        <pre>git config --list</pre>
+
+        <figcaption>Ändrar username</figcaption>
+        <pre>git config --global user.name "ninja-johan"</pre>
+
+        <figcaption>Färg UI</figcaption>
+        <pre>git config --global color.ui auto</pre>
+
+        <h2>Konfigurera Git från VS Code</h2>
+        <ul>
+            <li>Klicka <strong>Initialize Repository</strong> i VS Code eller...</li>
+            <li>Öppna VS Code's interna terminalfönster (CTRL-ö) och skriv konsolkommandon</li>
+        </ul>
+        
+        <h2>Git hjälp</h2>
+        
+        <pre>git <verb> --help</pre>
+
+        <h1>Versionshantering</h1>
+
+        <ul>
+            <li>Tre stages: Modified --> Staged --> Committed</li>
+        </ul>
+             
+        <figure class="figure">
+        <img src="https://git-scm.com/images/about/index1@2x.png" width="30%" height="30%" />
+        <figcaption>(bild: github.com)</figcaption>
+        </figure>
+
+        <ol>
+            <li><strong>Modified</strong> - Redigerade mapp(ar)/fil(er) upptäckta av Git (röd)</li>
+            <li><strong>Staged</strong> - Mapp(ar)/fil(er) märkta för att bli committed (gul)</li>
+            <li><strong>Committed</strong> - Mapp(ar)/fil(er) i säkert förvar inom versionsdatabasen (grön)</li>
+        </ol>
+        
+        <figcaption>Visa filer som ändrats</figcaption>
+        <pre>git status</pre>
+
+        <figcaption>Stage'ar fil eller allt</figcaption>
+        <pre>
+git add [filnamn]
+git add .</pre>
+
+        <figcaption>Visar kort meddelande</figcaption>
+        <pre>git status --short</pre>
+
+        <figcaption>Commit (lagrar versionen)</figcaption>
+        <pre>git commit --message "commit message"</pre>
+
+
+
+        <h1>Lab</h1>
+        <h2>Stage'a mapp(ar) fil(er)</h2>
+
+        <figcaption>- Fil | mapp | wildcard | alla | patch visar redigeringar mot repository</figcaption>
+        <pre>git add [fil] | [mapp] | *.???? | . | --patch</pre>
+
+        <figcaption>Unstage [mapp(ar)] / [fil(er)]</figcaption>
+        <pre>git reset [mapp] | [fil] | [path/fil]</pre>
+
+        <figcaption>Commit [fil(er)]</figcaption>
+        <pre>git commit --message "commit message"</pre>
+
+        <figcaption>Backa historik till tidigare commit (flytta HEAD)</figcaption>
+        <pre>git checkout HEAD [fil(er)]</pre>
+
+        <figcaption>Visar alla commits och ID (SHA-1)</figcaption>
+        <pre>git log</pre>
+
+        <figcaption>Visar commit händelser och visar vad som ändrats</figcaption>
+        <pre>git log --patch</pre>
+
+        <figcaption>sista två händelserna</figcaption>
+        <pre>git log --patch -2</pre>
+
+        <figcaption></figcaption>
+        <pre>git log --pretty=oneline</pre>
+
+        <figcaption>Lägger till en graf</figcaption>
+        <pre>git log --pretty=oneline --graph</pre>
+
+        <figcaption>Visar alla commits från viss användare</figcaption>
+        <pre>git log author="joh"</pre>
+
+        <figcaption>Fil eller mapp som inte ska behandlas av versionsystemet</figcaption>
+        <pre>.gitignore</pre>
+
+        <figcaption>Skapa filen <strong>.gitignore</strong></figcaption>
+        <pre>touch .gitignore</pre>
+
+        <figcaption>I filen .gitignore, lista vad som inte ska ingå i repo (ett entry/rad)</figcaption>
+        <pre>[fil] | [mapp]</pre>
+
+        <figcaption>Visa skillnader mellan arbetsfiler
+            och staging area</figcaption>
+        <pre>git diff [fil(er)] | [fil(er)]</pre>
+
+        <figcaption>Visa skillnader mellan staging
+            area och repository</figcaption>
+        <pre>git diff --staged</pre>
+
+
+        <h2>Visual Studio Code <img
+            src="https://image.apphit.com/image/visual-studio-code/visual-studio-code-logo.png"
+            width="3%" height="3%" /></h2>
+
+        <ul>
+            <li>Ett <strong>M</strong> indikerar modified</li>
+            <li><strong>+</strong> öppnar Stage <strong>A</strong> visas</li>
+            <li>Markera fil - Stage</li>
+            <li>Skriv commit message, skicka</li>
+            <li>Klick på <strong>M</strong> visar förändringar</li>
+            <li>"Undoing changes" från repository (kopierar tidigare stage till senaste, raderar inte)</li>
+        </ul>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
