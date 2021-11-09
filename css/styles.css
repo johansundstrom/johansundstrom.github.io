@@ -2,10 +2,12 @@
     margin-left: auto;
 }
 
+
+
 pre {
     background: #f8f8f8;
     border: 1px solid #ddd;
-    border-left: 3px solid #e29e0a;
+    border-left: 3px solid #e3dba4;
     color: #666;
     page-break-inside: avoid;
     font-family: monospace;
